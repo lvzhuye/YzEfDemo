@@ -1,0 +1,10 @@
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\YzEfDemo.exe.config
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\YzEfDemo.exe
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\YzEfDemo.pdb
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\EntityFramework.dll
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\EntityFramework.xml
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\obj\Debug\YzEfDemo.csprojResolveAssemblyReference.cache
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\obj\Debug\YzEfDemo.exe
+C:\Users\Vlinker\Documents\Visual Studio 2013\Projects\YzEfDemo\YzEfDemo\obj\Debug\YzEfDemo.pdb
