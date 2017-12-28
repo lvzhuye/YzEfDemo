@@ -14,25 +14,25 @@ namespace YzEfDemo
             var testModel = new TestModel
             {
                 Name="Yz",
-                Age=22
+                Age=20
             };
             YzEfDemoDbContext yzEfDemoDbContext = new YzEfDemoDbContext();
             yzEfDemoDbContext.TestModels.Add(testModel);
 
             //同一个dbContext实例，未保存之前是否能查到，查不到，不查缓存吗？
-            var queryResults = yzEfDemoDbContext.TestModels.Where(tm => tm.Age == 23).FirstOrDefault();
+            var queryResults = yzEfDemoDbContext.TestModels.Where(tm => tm.Age == 20).FirstOrDefault();
 
             //不同dbContext实例，未保存之前能查到吗？查不到
             YzEfDemoDbContext yzEfDemoDbContext2 = new YzEfDemoDbContext();
-            var queryResults2 = yzEfDemoDbContext2.TestModels.Where(tm => tm.Age == 22).FirstOrDefault();
+            var queryResults2 = yzEfDemoDbContext2.TestModels.Where(tm => tm.Age == 20).FirstOrDefault();
 
             yzEfDemoDbContext.SaveChanges();
 
             //发送sql请求吗？不会，缓存机制呢？
-            queryResults = yzEfDemoDbContext.TestModels.Where(tm => tm.Age == 22).FirstOrDefault();
+            queryResults = yzEfDemoDbContext.TestModels.Where(tm => tm.Age == 20).FirstOrDefault();
 
             //不同dbContext实例，另一个实例保存的，能查到吗？能查到
-            queryResults2 = yzEfDemoDbContext2.TestModels.Where(tm => tm.Age == 22).FirstOrDefault();
+            queryResults2 = yzEfDemoDbContext2.TestModels.Where(tm => tm.Age == 20).FirstOrDefault();
 
 
             //更新实体两种方式，观察sql更新
@@ -46,9 +46,23 @@ namespace YzEfDemo
             //SET [Name] = @0, [Age] = @1
             //WHERE ([Id] = @2)
             //',N'@0 nvarchar(max) ,@1 int,@2 int',@0=N'Yz2',@1=22,@2=8
-            //yzEfDemoDbContext.Entry(queryResults).State = System.Data.Entity.EntityState.Modified;
+            yzEfDemoDbContext.Entry(queryResults).State = System.Data.Entity.EntityState.Modified;
+
 
             yzEfDemoDbContext.SaveChanges();
+
+
+            //var beforeRemoveModel= yzEfDemoDbContext.TestModels.Where(tm => tm.Age == 20).FirstOrDefault();        
+
+            var sql = @"select *
+                        from dbo.TestModels where Age = 20";
+            var beforeRemoveModel = yzEfDemoDbContext.Database.SqlQuery<TestModel>(sql).ToList().FirstOrDefault();
+
+            //印证了，报错
+            yzEfDemoDbContext.TestModels.Remove(beforeRemoveModel);
+
+            yzEfDemoDbContext.SaveChanges();
+
 
         }
     }
